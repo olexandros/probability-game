@@ -6,14 +6,30 @@ const addHerb = () => {
      herb++;
      total++;
      document.getElementById('current').innerText = `Всього "підкидань": ${total}`;
-     console.log('Herb');
 }
 
 const addChyslo = () => {
      chyslo++;
      total++;
      document.getElementById('current').innerText = `Всього "підкидань": ${total}`;
-     console.log('Chyslo');
 }
 
+const startComp = () => {
+     let compHerb = 0;
+     let compChyslo = 0;
+     let compIterations = total;
 
+     for(let i = 0; i <= compIterations; i++){
+          //повертає рандомне число між 0 і 1
+          let random = Math.random();
+
+          if(random <= 0.5){
+               compHerb++;
+          }
+          else if (random > 0.5){
+               compChyslo++;
+          }
+     }
+
+     document.getElementById('comp-result').innerText = `Герб: ${compHerb}. Число: ${compChyslo}`;
+}
