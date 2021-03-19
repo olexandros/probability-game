@@ -2,7 +2,11 @@ let userHerb = 0;
 let userChyslo = 0;
 let totalClicked = 0;
 
+let userArr = [];
+let compArr = [];
+
 const addHerb = () => {
+     userArr.push('Г');
      userHerb++;
      totalClicked++;
      changeContent(true, 'current', `Всього "підкидань": ${totalClicked}`);
@@ -10,13 +14,14 @@ const addHerb = () => {
 }
 
 const addChyslo = () => {
+     userArr.push('Ч');
      userChyslo++;
      totalClicked++;
      changeContent(true, 'current', `Всього "підкидань": ${totalClicked}`);
      changeContent(false, 'comp-result');
 }
 
-const startComp = () => {
+const start = () => {
      let compHerb = 0;
      let compChyslo = 0;
      let compIterations = totalClicked;
@@ -26,18 +31,23 @@ const startComp = () => {
           let random = Math.random();
 
           if(random <= 0.5){
+               compArr.push('Г');
                compHerb++;
           }
           else if (random > 0.5){
+               compArr.push('Ч');
                compChyslo++;
           }
      }
 
      if(totalClicked === 0){
-          changeContent(true, 'comp-result', 'Спершу потрібно зробити симуляція вручну')
+          changeContent(true, 'comp-msg', 'Спершу потрібно зробити симуляція вручну')
      } else {
-          changeContent(true, 'comp-result',`Герб: ${compHerb}. Число: ${compChyslo}` )
+          changeContent(true, 'comp-msg',`Герб: ${compHerb}. Число: ${compChyslo}` )
      }
+
+     changeContent(true, 'user-result', userArr.join(" "));
+     changeContent(true, 'comp-result', compArr.join(" "));
 }
 
 
@@ -46,8 +56,9 @@ const restart = () => {
      userChyslo = 0;
      totalClicked = 0;
 
-     changeContent(false, 'comp-result');
+     changeContent(false, 'comp-msg');
      changeContent(false, 'current');
+     changeContent(false, 'user-result');
 }
 
 const changeContent = (toCreate, id, content) => {

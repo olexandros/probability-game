@@ -20,9 +20,9 @@
           <hr style="border: solid 1px blue; width: 50%; float: left;">
           <div class="computer">
                <h3>Випадкова симуляція</h3>
-               <p id="comp-result"></p>
+               <p id="comp-msg"></p>
                <p>Комп'ютерні алгоритми самі вирішать</p>
-               <button onclick="startComp()">Розпочати</button>
+               <button onclick="start()">Розпочати</button>
                <button onclick="restart()">Перезапустити</button>
           </div>
           <hr style="border: solid 1px blue; width: 50%; float: left;">
@@ -33,12 +33,21 @@
                     <p>За допомогою цієї симуляції можна зрозуміти, що таке "омана гравця"</p>
                     <p>Річ у тім, що ймовірність певної події не залежить від минулих результатів</p>
                     <p>Тобто, навіть, якщо в казино чорне випало 26 разів поспіль,
-                          <a target="_blank" href="http://www.fallacyfiles.org/gamblers.html">як це сталось в Монте Карло в 1913</a></p>
-                    <p>шанс того, що наспуного разу випаде червоне всерівно складає 50%</p>
+                          <a target="_blank" href="http://www.fallacyfiles.org/gamblers.html">як це сталось в Монте Карло в 1913</a>
+                          шанс того, що наспуного разу випаде червоне всерівно складає 50%</p>
                     <p>Ще один відомий приклад цього психологічного обману - 
                          <a target="_blank" href="https://www.theguardian.com/world/2005/feb/11/italy.sophiearie">національна лотерея в Італії 2005 року</a>,
                           яка ще відома під назвою 'лихоманка 53'</p>
                </div>
+          </div>
+          <hr style="border: solid 1px blue; width: 50%; float: left;">
+          <div class="result">
+               <br>
+               <p>Ось, що ми маємо в результаті симуляції:</p>
+               <p id="user-result-msg">Ваша комбінація виглядає так: </p>
+               <p id="user-result"></p>
+               <p id="comp-result-msg">А комп'ютерна комбінація така: </p>
+               <p id="comp-result"></p>
           </div>
      </div> 
 </body>
