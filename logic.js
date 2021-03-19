@@ -6,12 +6,14 @@ const addHerb = () => {
      userHerb++;
      totalClicked++;
      changeContent(true, 'current', `Всього "підкидань": ${totalClicked}`);
+     changeContent(false, 'comp-result');
 }
 
 const addChyslo = () => {
      userChyslo++;
      totalClicked++;
      changeContent(true, 'current', `Всього "підкидань": ${totalClicked}`);
+     changeContent(false, 'comp-result');
 }
 
 const startComp = () => {
@@ -19,7 +21,7 @@ const startComp = () => {
      let compChyslo = 0;
      let compIterations = totalClicked;
 
-     for(let i = 0; i <= compIterations; i++){
+     for(let i = 1; i <= compIterations; i++){
           //повертає рандомне число між 0 і 1
           let random = Math.random();
 
@@ -31,8 +33,11 @@ const startComp = () => {
           }
      }
 
-     changeContent(true, 'comp-result',`Герб: ${compHerb}. Число: ${compChyslo}` )
-     // document.getElementById('comp-result').innerText = `Герб: ${compHerb}. Число: ${compChyslo}`;
+     if(totalClicked === 0){
+          changeContent(true, 'comp-result', 'Спершу потрібно зробити симуляція вручну')
+     } else {
+          changeContent(true, 'comp-result',`Герб: ${compHerb}. Число: ${compChyslo}` )
+     }
 }
 
 
