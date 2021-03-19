@@ -9,29 +9,29 @@ let compArr = [];
 
 const addHerb = () => {
 
+     //якщо знову натиснуто на 'Герб' без перезапуску
      if(hasStarted){
           restart();
      }
 
      userArr.push('<span class="herb-char">Г</span>');
-     // userArr.push('Г');
      userHerb++;
      totalClicked++;
-     changeContent(true, 'current', `Всього "підкидань": ${totalClicked}`);
+     changeContent(true, 'user-msg', `Всього "підкидань": ${totalClicked}`);
      changeContent(false, 'comp-result');
 }
 
 const addChyslo = () => {
 
+     //якщо знову натиснуто на 'Число' без перезапуску
      if(hasStarted){
           restart();
      }
 
      userArr.push('<span class="chyslo-char">Ч</span>');
-     // userArr.push('Ч');
      userChyslo++;
      totalClicked++;
-     changeContent(true, 'current', `Всього "підкидань": ${totalClicked}`);
+     changeContent(true, 'user-msg', `Всього "підкидань": ${totalClicked}`);
      changeContent(false, 'comp-result');
 }
 
@@ -42,6 +42,7 @@ const start = () => {
      hasStarted = true;
 
      for(let i = 1; i <= compIterations; i++){
+
           //повертає рандомне число між 0 і 1
           let random = Math.random();
 
@@ -55,19 +56,33 @@ const start = () => {
           }
      }
 
-     if(totalClicked === 0){
-          changeContent(true, 'comp-msg', 'Спершу потрібно зробити симуляція вручну')
-     } else {
-          changeContent(true, 'comp-msg',`Герб: ${compHerb}. Число: ${compChyslo}` )
-     }
+     
 
      // Виведення масиву Г і Ч на екран 
-     // changeContent(true, 'user-result', userArr.join(" "));
-     // changeContent(true, 'comp-result', compArr.join(" "));
-
      document.getElementById('user-result').innerHTML = userArr.join(" ");
      document.getElementById('comp-result').innerHTML = compArr.join(" ");
 
+
+     // Підрахунок та виведення кількості і відношення
+     let herbPercentUser;
+     let chysloPercentUser;
+     let herbPercentComp;
+     let chysloPercentComp;
+
+     herbPercentUser = Math.round((userHerb * 100) / totalClicked);
+     chysloPercentUser = Math.round((userChyslo * 100) / totalClicked);
+     herbPercentComp = Math.round((compHerb * 100) / totalClicked);
+     chysloPercentComp = Math.round((compChyslo * 100) / totalClicked);
+
+     changeContent(true, 'user-msg', `Герб: ${userHerb}. Число: ${userChyslo}. Відношення %: ${herbPercentUser}/${chysloPercentUser}`);
+
+     if(totalClicked === 0){
+          changeContent(true, 'comp-msg', 'Спершу потрібно зробити симуляція вручну')
+          changeContent(true, 'user-msg', `Натискайте 'Герб' або 'Число' у довільному порядку`);
+     } else {
+          changeContent(true, 'comp-msg', `Герб: ${compHerb}. Число: ${compChyslo}. Відношення %: ${herbPercentComp}/${chysloPercentComp}`);
+          changeContent(true, 'user-msg', `Герб: ${userHerb}. Число: ${userChyslo}. Відношення %: ${herbPercentUser}/${chysloPercentUser}`);
+     }
 }
 
 
@@ -79,8 +94,8 @@ const restart = () => {
      compArr = [];
      hasStarted = false;
 
+     changeContent(false, 'user-msg');
      changeContent(false, 'comp-msg');
-     changeContent(false, 'current');
      changeContent(false, 'user-result');
      changeContent(false, 'comp-result');
 }
