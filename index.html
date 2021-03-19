@@ -12,7 +12,7 @@
      <div class="container">
           <div class="manual">
                <h3>Ручна симуляція</h3>
-               <p id="current"></p>
+               <p id="current">Всього "підкидань"</p>
                <p>Як гадаєте, що випаде цього разу?</p>
                <button onclick="addHerb()">Герб</button>
                <button onclick="addChyslo()">Число</button>
@@ -24,6 +24,15 @@
                <p>Комп'ютерні алгоритми самі вирішать</p>
                <button onclick="start()">Розпочати</button>
                <button onclick="restart()">Перезапустити</button>
+          </div>
+          <hr style="border: solid 1px blue; width: 50%; float: left;">
+          <div class="result">
+               <br>
+               <p>Ось, що ми маємо в результаті симуляції:</p>
+               <p id="user-result-msg">Ваша комбінація виглядає так: </p>
+               <p id="user-result"></p>
+               <p id="comp-result-msg">А комп'ютерна комбінація така: </p>
+               <p id="comp-result"></p>
           </div>
           <hr style="border: solid 1px blue; width: 50%; float: left;">
           <div class="info">
@@ -39,15 +48,6 @@
                          <a target="_blank" href="https://www.theguardian.com/world/2005/feb/11/italy.sophiearie">національна лотерея в Італії 2005 року</a>,
                           яка ще відома під назвою 'лихоманка 53'</p>
                </div>
-          </div>
-          <hr style="border: solid 1px blue; width: 50%; float: left;">
-          <div class="result">
-               <br>
-               <p>Ось, що ми маємо в результаті симуляції:</p>
-               <p id="user-result-msg">Ваша комбінація виглядає так: </p>
-               <p id="user-result"></p>
-               <p id="comp-result-msg">А комп'ютерна комбінація така: </p>
-               <p id="comp-result"></p>
           </div>
      </div> 
 </body>
