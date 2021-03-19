@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+:root {
+     --bg-blue: rgb(220, 242, 255);
+     --link-blue: rgb(27, 103, 245);
+}
+
+* {
+     margin: 0;
+     padding: 0;
+}
+
+body {
+     background-color: var(--bg-blue);
+     font-family: 'Inter', Verdana, sans-serif;
+}
+
+button {
+     background-color: white;
+     padding: 10px;
+     border: 2.5px solid black;
+     border-radius: 5px;
+     font-family: 'Inter';
+     font-weight: 700;
+     font-size: 0.8rem;
+     margin: 10px;
+}
+
+button:hover {
+     cursor: pointer;
+}
+
+.herb-btn:hover {
+     background-color: rgb(233, 111, 11);
+     border: 2.5px solid black;
+     color: white;
+}
+
+.chyslo-btn:hover {
+     background-color: var(--link-blue);
+     border: 2.5px solid black;
+     color: white;
+}
+
+button:hover {
+     background-color: white;
+     border-color: (var(--link-blue));
+}
+
+a, a:active, a:link {
+     color: black;
+     font-style: italic;
+     text-decoration: none;
+     border-bottom: 2.5px solid var(--link-blue);
+}
+
+.manual, .computer, .result, .info {
+     background-color: white;
+     border-radius: 10px;
+     margin: 15px auto;
+     padding: 10px 10px;
+     height: auto;
+     min-height: 5rem;
+     width: 90%;
+     position: relative;
+     font-size: 0.8rem;
+}
+
+.result-wrap {
+     background-color: rgb(240, 240, 240);
+     border-radius: 5px;
+     height: auto;
+     min-height: 1rem;
+     width: 95%;
+     padding: 10px;
+     margin: 10px auto;
+}
+
+.chyslo-char {
+     background-color: rgb(27, 103, 245);
+     border-radius: 3px;
+     display: inline-block;
+     margin: 3px auto 1px auto;
+     padding: 3px;
+     font-weight: bold;
+     color: white;
+}
+
+.herb-char {
+     background-color: rgb(233, 111, 11);
+     border-radius: 3px;
+     display: inline-block;
+     margin: 3px auto 1px auto;
+     padding: 3px;
+     font-weight: bold;
+     color: white;
+}
+
+#user-result-msg {
+     margin: 4px auto;
+     font-size: 0.9rem;
+}
+
+#comp-result-msg {
+     margin: 4px auto;
+     font-size: 0.9rem;
+}
+
+.arrow {
+     font-family: 'Inter';
+     font-weight: 800;
+     color: var(--link-blue);
+}

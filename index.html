@@ -5,45 +5,48 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Симуляція ймовірності🎲</title>
-
+     <link rel="stylesheet" href="style.css">
      <script src="logic.js"></script>
 </head>
 <body> 
      <div class="container">
           <div class="manual">
-               <h3>Ручна симуляція</h3>
+               <h4>Ручна симуляція</h4>
                <p id="user-msg">Всього "підкидань": 0</p>
                <p>Як гадаєте, що випаде цього разу?</p>
-               <button onclick="addHerb()">Герб</button>
-               <button onclick="addChyslo()">Число</button>
+               <button class="herb-btn" onclick="addHerb()">Герб</button>
+               <button class="chyslo-btn" onclick="addChyslo()">Число</button>
           </div>
-          <hr style="border: solid 1px blue; width: 50%; float: left;">
           <div class="computer">
-               <h3>Випадкова симуляція</h3>
+               <h4>Випадкова симуляція</h4>
                <p id="comp-msg"></p>
                <p>Комп'ютерні алгоритми самі вирішать</p>
                <button onclick="start()">Розпочати</button>
                <button onclick="restart()">Перезапустити</button>
           </div>
-          <hr style="border: solid 1px blue; width: 50%; float: left;">
           <div class="result">
-               <br>
                <p>Ось, що ми маємо в результаті симуляції:</p>
-               <p id="user-result-msg">Ваша комбінація виглядає так: </p>
-               <p id="user-result"></p>
-               <p id="comp-result-msg">А комп'ютерна комбінація така: </p>
-               <p id="comp-result"></p>
+               <div class="result-wrap">
+                    <p id="user-result-msg"></p>
+                    <p id="user-result"></p>
+               </div>
+               <div class="result-wrap">
+                    <p id="comp-result-msg"></p>
+                    <p id="comp-result"></p>
+               </div>
           </div>
-          <hr style="border: solid 1px blue; width: 50%; float: left;">
           <div class="info">
-               <br>
-               <p style="cursor: pointer;">Що це за експеримент <span class="arrow">→</span> </p>
+               <p style="cursor: pointer;">Що це за експеримент <span class="arrow">></span> </p>
                <div class="info-text">
+                    <br>
                     <p>За допомогою цієї симуляції можна зрозуміти, що таке "омана гравця"</p>
+                    <br>
                     <p>Річ у тім, що ймовірність певної події не залежить від минулих результатів</p>
+                    <br>
                     <p>Тобто, навіть, якщо в казино чорне випало 26 разів поспіль (
                           <a target="_blank" href="http://www.fallacyfiles.org/gamblers.html">як це сталось в Монте Карло в 1913</a>
                     ), шанс того, що наспуного разу випаде червоне всерівно складає 50%</p>
+                    <br>
                     <p>Ще один відомий приклад цього психологічного обману - 
                          <a target="_blank" href="https://www.theguardian.com/world/2005/feb/11/italy.sophiearie">національна лотерея в Італії 2005 року</a>,
                           яка також відома під назвою 'лихоманка 53'</p>

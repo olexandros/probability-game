@@ -47,7 +47,7 @@ const start = () => {
           let random = Math.random();
 
           if(random <= 0.5){
-               compArr.push('<span class="chyslo-char">Г</span>');
+               compArr.push('<span class="herb-char">Г</span>');
                compHerb++;
           }
           else if (random > 0.5){
@@ -56,7 +56,9 @@ const start = () => {
           }
      }
 
-     
+
+     changeContent(true, 'user-result-msg', `Ваша комбінація виглядає так: `)
+     changeContent(true, 'comp-result-msg', `А комп'ютерна комбінація така: `)
 
      // Виведення масиву Г і Ч на екран 
      document.getElementById('user-result').innerHTML = userArr.join(" ");
@@ -94,7 +96,7 @@ const restart = () => {
      compArr = [];
      hasStarted = false;
 
-     changeContent(false, 'user-msg');
+     changeContent(true, 'user-msg', `Всього "підкидань": 0`);
      changeContent(false, 'comp-msg');
      changeContent(false, 'user-result');
      changeContent(false, 'comp-result');
