@@ -6,13 +6,13 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Симуляція ймовірності🎲</title>
 
-     <script src="app.js"></script>
+     <script src="logic.js"></script>
 </head>
 <body>
      <div class="container">
           <div class="manual">
                <h3>Ручна симуляція</h3>
-               <p id="current">Всього "підкидань":</p>
+               <p id="current"></p>
                <p>Як гадаєте, що випаде цього разу?</p>
                <button onclick="addHerb()">Герб</button>
                <button onclick="addChyslo()">Число</button>
@@ -23,6 +23,7 @@
                <p id="comp-result"></p>
                <p>Комп'ютерні алгоритми самі вирішать</p>
                <button onclick="startComp()">Розпочати</button>
+               <button onclick="restart()">Перезапустити</button>
           </div>
      </div>
 </body>
