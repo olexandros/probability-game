@@ -8,7 +8,7 @@
 
      <script src="logic.js"></script>
 </head>
-<body>
+<body> 
      <div class="container">
           <div class="manual">
                <h3>Ручна симуляція</h3>
@@ -25,6 +25,21 @@
                <button onclick="startComp()">Розпочати</button>
                <button onclick="restart()">Перезапустити</button>
           </div>
-     </div>
+          <hr style="border: solid 1px blue; width: 50%; float: left;">
+          <div class="info">
+               <br>
+               <p style="cursor: pointer;">Що це за експеримент <span class="arrow">→</span> </p>
+               <div class="info-text">
+                    <p>За допомогою цієї симуляції можна зрозуміти, що таке "омана гравця"</p>
+                    <p>Річ у тім, що ймовірність певної події не залежить від минулих результатів</p>
+                    <p>Тобто, навіть, якщо в казино чорне випало 26 разів поспіль,
+                          <a target="_blank" href="http://www.fallacyfiles.org/gamblers.html">як це сталось в Монте Карло в 1913</a></p>
+                    <p>шанс того, що наспуного разу випаде червоне всерівно складає 50%</p>
+                    <p>Ще один відомий приклад цього психологічного обману - 
+                         <a target="_blank" href="https://www.theguardian.com/world/2005/feb/11/italy.sophiearie">національна лотерея в Італії 2005 року</a>,
+                          яка ще відома під назвою 'лихоманка 53'</p>
+               </div>
+          </div>
+     </div> 
 </body>
 </html>
