@@ -6,7 +6,6 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Симуляція ймовірності🎲</title>
      <link rel="stylesheet" href="style.css">
-     <script src="logic.js"></script>
 </head>
 <body> 
      <div class="container">
@@ -21,8 +20,8 @@
                <h4>Випадкова симуляція</h4>
                <p id="comp-msg"></p>
                <p>Комп'ютерні алгоритми самі вирішать</p>
-               <button onclick="start()">Розпочати</button>
-               <button onclick="restart()">Перезапустити</button>
+               <button  id="start-btn">Розпочати</button>
+               <button  id="restart-btn">Перезапустити</button>
           </div>
           <div class="result">
                <p>Ось, що ми маємо в результаті симуляції:</p>
@@ -53,5 +52,7 @@
                </div>
           </div>
      </div> 
+
+     <script src="logic.js"></script>
 </body>
 </html>

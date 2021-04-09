@@ -2,6 +2,8 @@
 :root {
      --bg-blue: rgb(220, 242, 255);
      --link-blue: rgb(27, 103, 245);
+
+     font-size: 20px;
 }
 
 * {
@@ -21,7 +23,7 @@ button {
      border-radius: 5px;
      font-family: 'Inter';
      font-weight: 700;
-     font-size: 0.8rem;
+     font-size: 0.9rem;
      margin: 10px;
 }
 
@@ -39,6 +41,10 @@ button:hover {
      background-color: var(--link-blue);
      border: 2.5px solid black;
      color: white;
+}
+
+h4 {
+     margin: 7px auto;
 }
 
 button:hover {
@@ -79,9 +85,10 @@ a, a:active, a:link {
      background-color: rgb(27, 103, 245);
      border-radius: 3px;
      display: inline-block;
-     margin: 3px auto 1px auto;
-     padding: 3px;
+     margin: 4px auto 1px auto;
+     padding: 3.5px;
      font-weight: bold;
+     font-size: 1rem;
      color: white;
 }
 
@@ -89,20 +96,21 @@ a, a:active, a:link {
      background-color: rgb(233, 111, 11);
      border-radius: 3px;
      display: inline-block;
-     margin: 3px auto 1px auto;
-     padding: 3px;
+     margin: 4px auto 1px auto;
+     padding: 3.5px;
      font-weight: bold;
+     font-size: 1rem;
      color: white;
 }
 
 #user-result-msg {
      margin: 4px auto;
-     font-size: 0.9rem;
+     font-size: 1rem;
 }
 
 #comp-result-msg {
      margin: 4px auto;
-     font-size: 0.9rem;
+     font-size: 1rem;
 }
 
 .arrow {

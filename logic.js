@@ -3,11 +3,25 @@ let userChyslo = 0;
 let totalClicked = 0;
 
 let hasStarted = false;
+let hasRestarted = false;
+let hasStartedWithoutRestarting = false;
 
 let userArr = [];
 let compArr = [];
 
-const addHerb = () => {
+// тестування додавання події (натиск) на кнопки
+
+let startBtn = document.querySelector("#start-btn");
+let restartBtn = document.querySelector("#restart-btn");
+
+
+startBtn.addEventListener("click", start)
+restartBtn.addEventListener("click", restart)
+
+
+
+
+function addHerb () {
 
      //якщо знову натиснуто на 'Герб' без перезапуску
      if(hasStarted){
@@ -21,7 +35,7 @@ const addHerb = () => {
      changeContent(false, 'comp-result');
 }
 
-const addChyslo = () => {
+function addChyslo () {
 
      //якщо знову натиснуто на 'Число' без перезапуску
      if(hasStarted){
@@ -35,12 +49,13 @@ const addChyslo = () => {
      changeContent(false, 'comp-result');
 }
 
-const start = () => {
+function start() {
      let compHerb = 0;
      let compChyslo = 0;
      let compIterations = totalClicked;
      hasStarted = true;
 
+     // алгоритм, що симулює випадковий вибір комп'ютера
      for(let i = 1; i <= compIterations; i++){
 
           //повертає рандомне число між 0 і 1
@@ -57,8 +72,6 @@ const start = () => {
      }
 
 
-     changeContent(true, 'user-result-msg', `Ваша комбінація виглядає так: `)
-     changeContent(true, 'comp-result-msg', `А комп'ютерна комбінація така: `)
 
      // Виведення масиву Г і Ч на екран 
      document.getElementById('user-result').innerHTML = userArr.join(" ");
@@ -79,30 +92,43 @@ const start = () => {
      changeContent(true, 'user-msg', `Герб: ${userHerb}. Число: ${userChyslo}. Відношення %: ${herbPercentUser}/${chysloPercentUser}`);
 
      if(totalClicked === 0){
-          changeContent(true, 'comp-msg', 'Спершу потрібно зробити симуляція вручну')
+          // Повідомлення, що для початку треба зробити симуляцію
+          changeContent(true, 'comp-msg', 'Спершу потрібно зробити симуляція вручну');
           changeContent(true, 'user-msg', `Натискайте 'Герб' або 'Число' у довільному порядку`);
+
+          changeContent(true, 'user-result-msg', `Немає вхідних даних! `);
+          changeContent(true, 'comp-result-msg', `Немає вхідних даних! `);
      } else {
+          // Симуляція була розпочата - виведення інформації через повідомлення
           changeContent(true, 'comp-msg', `Герб: ${compHerb}. Число: ${compChyslo}. Відношення %: ${herbPercentComp}/${chysloPercentComp}`);
           changeContent(true, 'user-msg', `Герб: ${userHerb}. Число: ${userChyslo}. Відношення %: ${herbPercentUser}/${chysloPercentUser}`);
+
+          changeContent(true, 'user-result-msg', `Ваша комбінація виглядає так: `);
+          changeContent(true, 'comp-result-msg', `А комп'ютерна комбінація така: `);
      }
+
 }
 
 
-const restart = () => {
+function restart() {
      userHerb = 0;
      userChyslo = 0;
      totalClicked = 0;
      userArr = [];
      compArr = [];
      hasStarted = false;
+     hasRestarted = true;
+
 
      changeContent(true, 'user-msg', `Всього "підкидань": 0`);
      changeContent(false, 'comp-msg');
      changeContent(false, 'user-result');
      changeContent(false, 'comp-result');
+     changeContent(false, 'user-result-msg');
+     changeContent(false, 'comp-result-msg');
 }
 
-const changeContent = (toCreate, id, content) => {
+function changeContent (toCreate, id, content)  {
      if(toCreate){
           return document.getElementById(id).innerText = content;
      } else {
