@@ -4,7 +4,6 @@ let totalClicked = 0;
 
 let hasStarted = false;
 let hasRestarted = false;
-let hasStartedWithoutRestarting = false;
 
 let userArr = [];
 let compArr = [];
@@ -12,11 +11,15 @@ let compArr = [];
 // тестування додавання події (натиск) на кнопки
 
 let startBtn = document.querySelector("#start-btn");
-let restartBtn = document.querySelector("#restart-btn");
+// let restartBtn = document.querySelector("#restart-btn");
 
 
-startBtn.addEventListener("click", start)
-restartBtn.addEventListener("click", restart)
+if(!hasStarted){
+     startBtn.addEventListener("click", start);
+} else if(hasStarted) {
+     startBtn.addEventListener("click", restart);
+}
+
 
 
 
@@ -50,61 +53,71 @@ function addChyslo () {
 }
 
 function start() {
-     let compHerb = 0;
-     let compChyslo = 0;
-     let compIterations = totalClicked;
-     hasStarted = true;
 
-     // алгоритм, що симулює випадковий вибір комп'ютера
-     for(let i = 1; i <= compIterations; i++){
+     if(hasStarted){
+          restart();
+     } else if(!hasStarted){
 
-          //повертає рандомне число між 0 і 1
-          let random = Math.random();
+          let compHerb = 0;
+          let compChyslo = 0;
+          let compIterations = totalClicked;
+          hasStarted = true;
 
-          if(random <= 0.5){
-               compArr.push('<span class="herb-char">Г</span>');
-               compHerb++;
+          startBtn.innerText = "Перезапустити"
+
+          // алгоритм, що симулює випадковий вибір комп'ютера
+          for(let i = 1; i <= compIterations; i++){
+
+               //повертає рандомне число між 0 і 1
+               let random = Math.random();
+
+               if(random <= 0.5){
+                    compArr.push('<span class="herb-char">Г</span>');
+                    compHerb++;
+               }
+               else if (random > 0.5){
+                    compArr.push('<span class="chyslo-char">Ч</span>');
+                    compChyslo++;
+               }
           }
-          else if (random > 0.5){
-               compArr.push('<span class="chyslo-char">Ч</span>');
-               compChyslo++;
+
+
+
+          // Виведення масиву Г і Ч на екран 
+          document.getElementById('user-result').innerHTML = userArr.join(" ");
+          document.getElementById('comp-result').innerHTML = compArr.join(" ");
+
+
+          // Підрахунок та виведення кількості і відношення
+          let herbPercentUser;
+          let chysloPercentUser;
+          let herbPercentComp;
+          let chysloPercentComp;
+
+          herbPercentUser = Math.round((userHerb * 100) / totalClicked);
+          chysloPercentUser = Math.round((userChyslo * 100) / totalClicked);
+          herbPercentComp = Math.round((compHerb * 100) / totalClicked);
+          chysloPercentComp = Math.round((compChyslo * 100) / totalClicked);
+
+          changeContent(false, "user-bg-msg");
+          changeContent(false, "comp-bg-msg");
+
+          if(totalClicked === 0){
+               // Повідомлення, що для початку треба зробити симуляцію
+               changeContent(true, 'comp-msg', 'Спершу потрібно зробити симуляція вручну');
+               changeContent(true, 'user-msg', `Натискайте 'Герб' або 'Число' у довільному порядку`);
+
+               changeContent(true, 'user-result-msg', `Немає вхідних даних! `);
+               changeContent(true, 'comp-result-msg', `Немає вхідних даних! `);
+          } else {
+               // Симуляція була розпочата - виведення інформації через повідомлення
+               changeContent(true, 'comp-msg', `Герб: ${compHerb}. Число: ${compChyslo}. Відношення %: ${herbPercentComp}/${chysloPercentComp}`);
+               changeContent(true, 'user-msg', `Герб: ${userHerb}. Число: ${userChyslo}. Відношення %: ${herbPercentUser}/${chysloPercentUser}`);
+
+               changeContent(true, 'user-result-msg', `Ваша комбінація виглядає так: `);
+               changeContent(true, 'comp-result-msg', `А комп'ютерна комбінація така: `);
           }
-     }
 
-
-
-     // Виведення масиву Г і Ч на екран 
-     document.getElementById('user-result').innerHTML = userArr.join(" ");
-     document.getElementById('comp-result').innerHTML = compArr.join(" ");
-
-
-     // Підрахунок та виведення кількості і відношення
-     let herbPercentUser;
-     let chysloPercentUser;
-     let herbPercentComp;
-     let chysloPercentComp;
-
-     herbPercentUser = Math.round((userHerb * 100) / totalClicked);
-     chysloPercentUser = Math.round((userChyslo * 100) / totalClicked);
-     herbPercentComp = Math.round((compHerb * 100) / totalClicked);
-     chysloPercentComp = Math.round((compChyslo * 100) / totalClicked);
-
-     changeContent(true, 'user-msg', `Герб: ${userHerb}. Число: ${userChyslo}. Відношення %: ${herbPercentUser}/${chysloPercentUser}`);
-
-     if(totalClicked === 0){
-          // Повідомлення, що для початку треба зробити симуляцію
-          changeContent(true, 'comp-msg', 'Спершу потрібно зробити симуляція вручну');
-          changeContent(true, 'user-msg', `Натискайте 'Герб' або 'Число' у довільному порядку`);
-
-          changeContent(true, 'user-result-msg', `Немає вхідних даних! `);
-          changeContent(true, 'comp-result-msg', `Немає вхідних даних! `);
-     } else {
-          // Симуляція була розпочата - виведення інформації через повідомлення
-          changeContent(true, 'comp-msg', `Герб: ${compHerb}. Число: ${compChyslo}. Відношення %: ${herbPercentComp}/${chysloPercentComp}`);
-          changeContent(true, 'user-msg', `Герб: ${userHerb}. Число: ${userChyslo}. Відношення %: ${herbPercentUser}/${chysloPercentUser}`);
-
-          changeContent(true, 'user-result-msg', `Ваша комбінація виглядає так: `);
-          changeContent(true, 'comp-result-msg', `А комп'ютерна комбінація така: `);
      }
 
 }
@@ -117,7 +130,8 @@ function restart() {
      userArr = [];
      compArr = [];
      hasStarted = false;
-     hasRestarted = true;
+
+     startBtn.innerText = "Ще раз розпочати";
 
 
      changeContent(true, 'user-msg', `Всього "підкидань": 0`);
